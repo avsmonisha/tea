@@ -1,0 +1,65 @@
+title,price,description,category,image_url,origin,flavour_notes,in_stock
+Earl Grey,18.99,"Classic black tea infused with aromatic bergamot oil. A timeless favorite with citrus notes and a smooth, refined finish.",black,/teas/earl-grey.jpg,"Sri Lanka","Bergamot|Citrus|Floral",true
+Masala Chai,16.99,"Bold Assam black tea blended with traditional Indian spices. Warm, aromatic, and perfect with milk.",black,/teas/masala-chai.jpg,"Assam, India","Cardamom|Cinnamon|Clove|Ginger",true
+Rose Black Tea,22.99,"Elegant black tea layered with dried rose petals. Romantic, fragrant, and subtly sweet.",black,/teas/rose-black.jpg,"Fujian, China","Rose|Floral|Sweet",true
+Vanilla Black Tea,17.99,"Smooth Ceylon black tea with natural vanilla bean essence. Creamy, comforting, and aromatic.",black,/teas/vanilla-black.jpg,"Sri Lanka","Vanilla|Creamy|Sweet",true
+Caramel Black Tea,18.99,"Rich black tea with buttery caramel notes. Indulgent, smooth, and dessert-like.",black,/teas/caramel-black.jpg,"Sri Lanka","Caramel|Buttery|Sweet",true
+Lemon Black Tea,15.99,"Bright and zesty black tea with natural lemon flavoring. Refreshing and uplifting.",black,/teas/lemon-black.jpg,"Sri Lanka","Lemon|Citrus|Bright",true
+Orange Peel Black Tea,16.99,"Aromatic black tea blended with dried orange peel. Citrusy, warm, and invigorating.",black,/teas/orange-black.jpg,"Sri Lanka","Orange|Citrus|Zesty",true
+Chocolate Black Tea,19.99,"Decadent black tea with rich cocoa notes. A chocolate lover's dream in a cup.",black,/teas/chocolate-black.jpg,"Sri Lanka","Chocolate|Cocoa|Rich",true
+Honey Black Tea,17.99,"Sweet and smooth black tea with natural honey essence. Comforting and naturally sweet.",black,/teas/honey-black.jpg,"Sri Lanka","Honey|Sweet|Smooth",true
+Ginger Black Tea,16.99,"Warming black tea with spicy ginger kick. Invigorating, bold, and perfect for cold days.",black,/teas/ginger-black.jpg,"Assam, India","Ginger|Spicy|Warming",true
+Lemon Green Tea,14.99,"Light and refreshing green tea with bright lemon notes. Perfect for a morning boost.",green,/teas/lemon-green.jpg,"China","Lemon|Citrus|Fresh",true
+Mint Green Tea,15.99,"Cool and invigorating green tea with fresh spearmint. Refreshing and cleansing.",green,/teas/mint-green.jpg,"Morocco","Mint|Cool|Fresh",true
+Honey Green Tea,16.99,"Delicate green tea sweetened with natural honey essence. Smooth and naturally sweet.",green,/teas/honey-green.jpg,"China","Honey|Sweet|Floral",true
+Ginger Green Tea,15.99,"Energizing green tea with warming ginger root. Digestive-friendly and stimulating.",green,/teas/ginger-green.jpg,"Japan","Ginger|Warming|Spicy",true
+Tulsi Green Tea,17.99,"Sacred holy basil blended with green tea. Adaptogenic, calming, and spiritually uplifting.",green,/teas/tulsi-green.jpg,"India","Tulsi|Herbal|Earthy",true
+Jasmine Green Tea,19.99,"Premium green tea scented with jasmine blossoms. Fragrant, romantic, and soothing.",green,/teas/jasmine-green.jpg,"Fujian, China","Jasmine|Floral|Sweet",true
+Peach Green Tea,16.99,"Fruity green tea with sweet peach flavor. Summer in a cup, perfect iced or hot.",green,/teas/peach-green.jpg,"China","Peach|Fruity|Sweet",true
+Apple Cinnamon Green Tea,17.99,"Cozy green tea with apple and warm cinnamon. Autumn-inspired and comforting.",green,/teas/apple-cinnamon-green.jpg,"China","Apple|Cinnamon|Warm",true
+Mango Green Tea,16.99,"Tropical green tea bursting with ripe mango flavor. Exotic, sweet, and refreshing.",green,/teas/mango-green.jpg,"India","Mango|Tropical|Sweet",true
+Pomegranate Green Tea,18.99,"Antioxidant-rich green tea with tangy pomegranate. Bold, fruity, and health-boosting.",green,/teas/pomegranate-green.jpg,"China","Pomegranate|Tangy|Berry",true
+Rose White Tea,28.99,"Delicate white tea with romantic rose petals. Elegant, fragrant, and luxurious.",white,/teas/rose-white.jpg,"Fujian, China","Rose|Floral|Delicate",true
+Lavender White Tea,29.99,"Calming white tea with French lavender. Relaxing, aromatic, and spa-like.",white,/teas/lavender-white.jpg,"Fujian, China","Lavender|Floral|Calming",true
+Peach White Tea,26.99,"Soft white tea with juicy peach notes. Light, fruity, and refreshing.",white,/teas/peach-white.jpg,"Fujian, China","Peach|Fruity|Soft",true
+Blueberry White Tea,27.99,"Antioxidant-rich white tea with sweet blueberries. Berry-forward and naturally sweet.",white,/teas/blueberry-white.jpg,"Fujian, China","Blueberry|Berry|Sweet",true
+Lychee White Tea,29.99,"Exotic white tea with fragrant lychee fruit. Tropical, floral, and sophisticated.",white,/teas/lychee-white.jpg,"Fujian, China","Lychee|Tropical|Floral",true
+Jasmine White Tea,32.99,"Premium white tea scented with jasmine flowers. Exquisite, fragrant, and refined.",white,/teas/jasmine-white.jpg,"Fujian, China","Jasmine|Floral|Elegant",true
+Vanilla White Tea,28.99,"Silky white tea with creamy vanilla notes. Smooth, sweet, and comforting.",white,/teas/vanilla-white.jpg,"Fujian, China","Vanilla|Creamy|Sweet",true
+Honey White Tea,27.99,"Pure white tea with natural honey sweetness. Gentle, soothing, and naturally sweet.",white,/teas/honey-white.jpg,"Fujian, China","Honey|Sweet|Smooth",true
+Ginger Lemon Herbal,14.99,"Warming ginger root with bright lemon. Immune-boosting and digestive-friendly.",herbal,/teas/ginger-lemon.jpg,India,"Ginger|Lemon|Warming",true
+Peppermint Lavender,15.99,"Cooling peppermint meets calming lavender. Relaxing, refreshing, and aromatic.",herbal,/teas/peppermint-lavender.jpg,France,"Peppermint|Lavender|Calming",true
+Chamomile Honey,14.99,"Soothing chamomile with natural honey essence. Perfect for bedtime relaxation.",herbal,/teas/chamomile-honey.jpg,Egypt,"Chamomile|Honey|Soothing",true
+Hibiscus Rose,16.99,"Vibrant hibiscus with romantic rose petals. Tangy, floral, and ruby red.",herbal,/teas/hibiscus-rose.jpg,Egypt,"Hibiscus|Rose|Tangy",true
+Rosemary Mint,15.99,"Herbaceous rosemary with refreshing mint. Stimulating and cleansing.",herbal,/teas/rosemary-mint.jpg,Mediterranean,"Rosemary|Mint|Herbal",true
+Turmeric Ginger,17.99,"Golden turmeric with warming ginger. Anti-inflammatory blend.",herbal,/teas/turmeric-ginger.jpg,India,"Turmeric|Ginger|Earthy",true
+Apple Cinnamon Herbal,14.99,"Sweet apple with warm cinnamon. Cozy and caffeine-free.",herbal,/teas/apple-cinnamon-herbal.jpg,USA,"Apple|Cinnamon|Sweet",true
+Berry Blast Herbal,15.99,"Mixed berry medley with hibiscus. Fruity and vibrant.",herbal,/teas/berry-blast.jpg,USA,"Berry|Hibiscus|Fruity",true
+Orange Spice Herbal,15.99,"Zesty orange peel with warming spices. Festive and comforting.",herbal,/teas/orange-spice.jpg,Morocco,"Orange|Cinnamon|Clove",true
+Tie Guan Yin (Iron Goddess),32.99,"Legendary Chinese oolong with orchid-like floral notes.",oolong,/teas/tie-guan-yin.jpg,"Fujian, China","Orchid|Creamy|Honey",true
+Da Hong Pao (Big Red Robe),45.99,"Highly prized roasted oolong with mineral complexity.",oolong,/teas/da-hong-pao.jpg,"Wuyi Mountains, China","Roasted|Stone Fruit|Mineral",true
+Milk Oolong (Jin Xuan),28.99,"Naturally creamy Taiwanese oolong with buttery notes.",oolong,/teas/milk-oolong.jpg,Taiwan,"Creamy|Buttery|Sweet",true
+Oriental Beauty,38.99,"Naturally sweet oolong with honey and muscatel notes.",oolong,/teas/oriental-beauty.jpg,Taiwan,"Honey|Muscatel|Fruity",true
+Phoenix Dan Cong,42.99,"Single-bush oolong with intense orchid fragrance.",oolong,/teas/dan-cong.jpg,"Guangdong, China","Orchid|Stone Fruit|Floral",true
+Alishan High Mountain,35.99,"High-altitude Taiwanese oolong, smooth and floral.",oolong,/teas/alishan-oolong.jpg,"Alishan, Taiwan","Floral|Buttery|Sweet",true
+Dong Ding (Frozen Peak),29.99,"Classic roasted oolong with caramel notes.",oolong,/teas/dong-ding.jpg,"Nantou, Taiwan","Roasted|Caramel|Toasty",true
+Aged Pu-erh Cake (10 Year),58.99,"Decade-aged pu-erh with deep earthy complexity.",pu-erh,/teas/aged-puerh.jpg,"Yunnan, China","Earth|Leather|Dates",true
+Ripe Pu-erh Loose Leaf,22.99,"Smooth ripe pu-erh with cocoa and mushroom notes.",pu-erh,/teas/ripe-puerh.jpg,"Yunnan, China","Cocoa|Mushroom|Sweet",true
+Sheng Raw Pu-erh,34.99,"Young raw pu-erh with fresh evolving flavors.",pu-erh,/teas/sheng-puerh.jpg,"Yunnan, China","Fresh|Apricot|Camphor",true
+Sticky Rice Pu-erh (Nuomi Xiang),19.99,"Pu-erh infused with sticky rice herb.",pu-erh,/teas/sticky-rice-puerh.jpg,"Yunnan, China","Sticky Rice|Sweet|Earthy",true
+Chrysanthemum Pu-erh,24.99,"Pu-erh blended with dried chrysanthemum flowers.",pu-erh,/teas/chrysanthemum-puerh.jpg,"Yunnan, China","Chrysanthemum|Floral|Earthy",true
+Tangerine Peel Pu-erh (Chen Pi),32.99,"Pu-erh aged inside tangerine peel.",pu-erh,/teas/tangerine-puerh.jpg,"Yunnan & Guangdong, China","Citrus|Tangerine|Earthy",true
+Moonlight White Pu-erh,36.99,"Rare white pu-erh with delicate sweetness.",pu-erh,/teas/moonlight-puerh.jpg,"Yunnan, China","Delicate|Hay|Dried Fruit",true
+Tea Lover's Starter Kit,49.99,"Introductory premium tea gift set.",gifts,/gifts/tea-lovers-gift-set.jpg,Various,"Variety|Premium|Complete Set",true
+Wellness Tea Gift Box,59.99,"Health-focused tea collection with mug.",gifts,/gifts/wellness-gift-set.jpg,Various,"Wellness|Healing|Relaxation",true
+Premium Oolong Collection,79.99,"Luxury oolong gift set.",gifts,/gifts/oolong-collection-gift.jpg,"Taiwan & China","Premium|Complex|Sophisticated",true
+Tea & Honey Pairing Set,64.99,"Artisan tea and honey pairing.",gifts,/gifts/tea-honey-gift.jpg,Various,"Sweet|Artisan|Pairing",true
+Relaxation Gift Set,54.99,"Calming teas with spa accessories.",gifts,/gifts/relaxation-gift-set.jpg,Various,"Calming|Soothing|Spa-like",true
+Corporate Tea Gift Box,89.99,"Premium corporate gifting tea box.",gifts,/gifts/corporate-gift-box.jpg,Various,"Professional|Elegant|Premium",true
+Black Tea Discovery Sampler,24.99,"Explore 6 distinctive black teas from around the world. Perfect for finding your new favorite.",samplers,/samplers/black-tea-sampler.jpg,Various,"Bold|Rich|Variety",true
+Green Tea Explorer,22.99,"Journey through 6 unique green teas from Japan and China. Includes brewing instructions for each.",samplers,/samplers/green-tea-sampler.jpg,"Japan & China","Fresh|Grassy|Antioxidant",true
+Herbal Wellness Sampler,19.99,"Caffeine-free collection of 6 healing herbal blends. From calming chamomile to energizing ginger.",samplers,/samplers/herbal-sampler.jpg,Various,"Caffeine-free|Healing|Natural",true
+White Tea Collection,34.99,"Discover the delicate world of white teas. 5 premium selections showcasing subtle complexity.",samplers,/samplers/white-tea-sampler.jpg,"Fujian, China","Delicate|Subtle|Premium",true
+Oolong Tasting Flight,29.99,"Experience the spectrum of oolong from light to dark roast. 5 distinctive varieties included.",samplers,/samplers/oolong-sampler.jpg,"Taiwan & China","Complex|Floral|Roasted",true
+Pu-erh Journey Sampler,39.99,"Explore aged and fermented teas. 4 pu-erh varieties from young sheng to 10-year aged ripe.",samplers,/samplers/puerh-sampler.jpg,"Yunnan, China","Earthy|Aged|Complex",true
+Ultimate Tea Sampler,44.99,"Our bestselling sampler with 12 teas across all categories. The perfect way to explore our collection.",samplers,/samplers/ultimate-sampler.jpg,Various,"Complete|Variety|Bestseller",true

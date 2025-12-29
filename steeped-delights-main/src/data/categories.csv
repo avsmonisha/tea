@@ -1,0 +1,18 @@
+id,name,description,image
+black,Black Tea,"Bold, robust, and fully oxidized","/teas/masala-chai.jpg"
+oolong,Oolong Tea,"Complex flavors between green and black","/teas/tie-guan-yin.jpg"
+white,White Tea,"Delicate, subtle, and minimally processed","/teas/rose-white.jpg"
+herbal,Herbal Tea,"Caffeine-free botanical infusions","/teas/chamomile-honey.jpg"
+pu-erh,Pu-erh Tea,"Aged, earthy, and deeply complex","/teas/aged-puerh.jpg"
+gifts,Gift Sets,"Beautifully packaged tea collections","/teas/jasmine-green.jpg"
+samplers,Samplers,"Discover new favorites with variety packs","/teas/milk-oolong.jpg"
+
+
+id,name,description,image
+black,Black Tea,"Bold, robust, and fully oxidized",/teas/masala-chai.jpg
+oolong,Oolong Tea,"Complex flavors between green and black",/teas/tie-guan-yin.jpg
+white,White Tea,"Delicate, subtle, and minimally processed",/teas/rose-white.jpg
+herbal,Herbal Tea,"Caffeine-free botanical infusions",/teas/chamomile-honey.jpg
+pu-erh,Pu-erh Tea,"Aged, earthy, and deeply complex",/teas/aged-puerh.jpg
+gifts,Gift Sets,"Beautifully packaged tea collections",/teas/jasmine-green.jpg
+samplers,Samplers,"Discover new favorites with variety packs",/teas/milk-oolong.jpg
