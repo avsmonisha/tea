@@ -82,6 +82,12 @@ export function Header() {
                   {user.email}
                 </div>
                 <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href="/profile" className="flex items-center gap-2 cursor-pointer">
+                    <User className="h-4 w-4" />
+                    Profile
+                  </Link>
+                </DropdownMenuItem>
                 {isAdmin && (
                   <DropdownMenuItem asChild>
                     <Link href="/admin" className="flex items-center gap-2 cursor-pointer">
@@ -90,6 +96,7 @@ export function Header() {
                     </Link>
                   </DropdownMenuItem>
                 )}
+                <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleSignOut} className="flex items-center gap-2 cursor-pointer">
                   <LogOut className="h-4 w-4" />
                   Sign Out
@@ -136,6 +143,14 @@ export function Header() {
                 ))}
                 {user ? (
                   <>
+                    <Link
+                      href="/profile"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-lg font-medium text-foreground hover:text-primary transition-colors flex items-center gap-2"
+                    >
+                      <User className="h-5 w-5" />
+                      Profile
+                    </Link>
                     {isAdmin && (
                       <Link
                         href="/admin"

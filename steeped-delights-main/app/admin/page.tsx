@@ -3,11 +3,12 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Layout } from "@/components/layout/Layout";
-import { categories } from "@/data/products";
-import { TeaCategory } from "@/types/product";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
+import { Switch } from "@/components/ui/switch";
 import {
   Select,
   SelectContent,
@@ -43,29 +44,50 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
-import { Switch } from "@/components/ui/switch";
-import { Plus, Pencil, Trash2, Package, Loader2 } from "lucide-react";
+import { Plus, Pencil, Trash2, Package, Loader2, Shield } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
-import { useProducts, useCreateProduct, useUpdateProduct, useDeleteProduct } from "@/hooks/useProducts";
+import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 
-export default function Admin() {
+interface Product {
+  id: string;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image_url: string;
+  origin: string;
+  flavour_notes: string[];
+  in_stock: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
+const categories = [
+  { id: "green", name: "Green Tea" },
+  { id: "black", name: "Black Tea" },
+  { id: "oolong", name: "Oolong" },
+  { id: "white", name: "White Tea" },
+  { id: "herbal", name: "Herbal" },
+  { id: "pu-erh", name: "Pu-erh" },
+  { id: "gifts", name: "Gifts" },
+  { id: "samplers", name: "Samplers" },
+];
+
+export default function AdminPage() {
   const router = useRouter();
   const { user, isAdmin, loading: authLoading } = useAuth();
-  const { data: products = [], isLoading: productsLoading } = useProducts();
-  const createProduct = useCreateProduct();
-  const updateProduct = useUpdateProduct();
-  const deleteProduct = useDeleteProduct();
 
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingProductId, setEditingProductId] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     price: "",
     description: "",
-    category: "green" as TeaCategory,
+    category: "green",
     image_url: "",
     origin: "",
     flavour_notes: "",
@@ -73,21 +95,48 @@ export default function Admin() {
   });
 
   useEffect(() => {
-    if (!authLoading && !user) {
-      router.push("/auth");
-    }
-  }, [user, authLoading, router]);
-
-  useEffect(() => {
-    if (!authLoading && user && !isAdmin) {
-      toast({
-        title: "Access Denied",
-        description: "You don't have admin privileges.",
-        variant: "destructive",
-      });
-      router.push("/");
+    if (!authLoading) {
+      if (!user) {
+        router.push("/auth");
+        return;
+      }
+      if (!isAdmin) {
+        toast({
+          title: "Access Denied",
+          description: "You don't have admin privileges.",
+          variant: "destructive",
+        });
+        router.push("/");
+        return;
+      }
     }
   }, [user, isAdmin, authLoading, router]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+      setProducts(data || []);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      toast({
+        title: "Error",
+        description: "Failed to fetch products",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const resetForm = () => {
     setFormData({
@@ -103,7 +152,7 @@ export default function Admin() {
     setEditingProductId(null);
   };
 
-  const openEditDialog = (product: typeof products[0]) => {
+  const openEditDialog = (product: Product) => {
     setEditingProductId(product.id);
     setFormData({
       title: product.title,
@@ -120,44 +169,82 @@ export default function Admin() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    const productData = {
-      title: formData.title,
-      price: parseFloat(formData.price),
-      description: formData.description,
-      category: formData.category,
-      image_url: formData.image_url || "https://images.unsplash.com/photo-1556881286-fc6915169721?w=600&h=600&fit=crop",
-      origin: formData.origin,
-      flavour_notes: formData.flavour_notes.split(",").map((n) => n.trim()),
-      in_stock: formData.in_stock,
-    };
+    try {
+      const productData = {
+        title: formData.title,
+        price: parseFloat(formData.price),
+        description: formData.description,
+        category: formData.category,
+        image_url: formData.image_url || "https://images.unsplash.com/photo-1556881286-fc6915169721?w=600&h=600&fit=crop",
+        origin: formData.origin,
+        flavour_notes: formData.flavour_notes.split(",").map((n) => n.trim()),
+        in_stock: formData.in_stock,
+      };
 
-    if (editingProductId) {
-      updateProduct.mutate({ id: editingProductId, ...productData });
-    } else {
-      createProduct.mutate(productData);
+      if (editingProductId) {
+        const { error } = await supabase
+          .from("products")
+          .update(productData)
+          .eq("id", editingProductId);
+
+        if (error) throw error;
+        toast({
+          title: "Success",
+          description: "Product updated successfully",
+        });
+      } else {
+        const { error } = await supabase
+          .from("products")
+          .insert([productData]);
+
+        if (error) throw error;
+        toast({
+          title: "Success",
+          description: "Product created successfully",
+        });
+      }
+
+      setIsDialogOpen(false);
+      resetForm();
+      await fetchProducts();
+    } catch (error) {
+      console.error("Error saving product:", error);
+      toast({
+        title: "Error",
+        description: "Failed to save product",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setIsDialogOpen(false);
-    resetForm();
   };
 
-  const handleDelete = (id: string) => {
-    deleteProduct.mutate(id);
+  const handleDelete = async (id: string) => {
+    try {
+      const { error } = await supabase
+        .from("products")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
+      toast({
+        title: "Success",
+        description: "Product deleted successfully",
+      });
+      await fetchProducts();
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      toast({
+        title: "Error",
+        description: "Failed to delete product",
+        variant: "destructive",
+      });
+    }
   };
 
-  const categoryLabels: Record<string, string> = {
-    green: "Green Tea",
-    black: "Black Tea",
-    oolong: "Oolong",
-    white: "White Tea",
-    herbal: "Herbal",
-    "pu-erh": "Pu-erh",
-    gifts: "Gifts",
-    samplers: "Samplers",
-  };
-
-  if (authLoading || productsLoading) {
+  if (authLoading || loading) {
     return (
       <Layout>
         <div className="container flex items-center justify-center min-h-[60vh]">
@@ -175,13 +262,16 @@ export default function Admin() {
     <Layout>
       <div className="container py-8">
         <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="font-serif text-3xl font-semibold text-foreground">
-              Product Management
-            </h1>
-            <p className="text-muted-foreground mt-1">
-              Manage your tea product catalog
-            </p>
+          <div className="flex items-center gap-3">
+            <Shield className="h-8 w-8 text-primary" />
+            <div>
+              <h1 className="font-serif text-3xl font-semibold text-foreground">
+                Admin Panel
+              </h1>
+              <p className="text-muted-foreground mt-1">
+                Manage your tea product catalog
+              </p>
+            </div>
           </div>
 
           <Dialog open={isDialogOpen} onOpenChange={(open) => {
@@ -241,7 +331,7 @@ export default function Admin() {
                     <Label htmlFor="category">Category</Label>
                     <Select
                       value={formData.category}
-                      onValueChange={(value: TeaCategory) =>
+                      onValueChange={(value) =>
                         setFormData({ ...formData, category: value })
                       }
                     >
@@ -328,9 +418,9 @@ export default function Admin() {
                   <Button 
                     type="submit" 
                     className="bg-primary hover:bg-primary/90"
-                    disabled={createProduct.isPending || updateProduct.isPending}
+                    disabled={isSubmitting}
                   >
-                    {(createProduct.isPending || updateProduct.isPending) && (
+                    {isSubmitting && (
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     )}
                     {editingProductId ? "Update Product" : "Add Product"}
@@ -401,50 +491,31 @@ export default function Admin() {
               ) : (
                 products.map((product) => (
                   <TableRow key={product.id}>
+                    <TableCell className="font-medium">{product.title}</TableCell>
                     <TableCell>
-                      <div className="flex items-center gap-3">
-                        <img
-                          src={product.image_url}
-                          alt={product.title}
-                          className="w-12 h-12 object-cover rounded-md"
-                        />
-                        <div>
-                          <p className="font-medium text-foreground">{product.title}</p>
-                          <p className="text-xs text-muted-foreground line-clamp-1">
-                            {product.flavour_notes.join(", ")}
-                          </p>
-                        </div>
-                      </div>
+                      <Badge variant="secondary">
+                        {categories.find((c) => c.id === product.category)?.name || product.category}
+                      </Badge>
                     </TableCell>
+                    <TableCell>{product.origin}</TableCell>
                     <TableCell>
-                      <Badge variant="outline">{categoryLabels[product.category]}</Badge>
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">{product.origin}</TableCell>
-                    <TableCell>
-                      <Badge variant={product.in_stock ? "default" : "secondary"}>
+                      <Badge variant={product.in_stock ? "default" : "destructive"}>
                         {product.in_stock ? "In Stock" : "Out of Stock"}
                       </Badge>
                     </TableCell>
-                    <TableCell className="text-right font-medium">
-                      ${product.price.toFixed(2)}
-                    </TableCell>
+                    <TableCell className="text-right">${product.price.toFixed(2)}</TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-2">
                         <Button
                           variant="outline"
                           size="icon"
                           onClick={() => openEditDialog(product)}
-                          className="h-8 w-8 hover:bg-primary/10"
                         >
                           <Pencil className="h-4 w-4" />
                         </Button>
                         <AlertDialog>
                           <AlertDialogTrigger asChild>
-                            <Button
-                              variant="outline"
-                              size="icon"
-                              className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10 border-destructive/30"
-                            >
+                            <Button variant="outline" size="icon" className="text-destructive hover:text-destructive">
                               <Trash2 className="h-4 w-4" />
                             </Button>
                           </AlertDialogTrigger>

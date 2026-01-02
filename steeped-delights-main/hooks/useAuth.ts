@@ -17,15 +17,11 @@ export const useAuth = () => {
     loading: true,
   });
 
-  const checkAdminRole = useCallback(async (userId: string) => {
-    const { data, error } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", userId)
-      .eq("role", "admin")
-      .maybeSingle();
+  const checkAdminRole = useCallback(async (userId: string, userEmail: string | undefined) => {
+    if (!userEmail) return false;
     
-    return !error && data !== null;
+    const ADMIN_EMAIL = "avsmonisha@gmail.com";
+    return userEmail.toLowerCase() === ADMIN_EMAIL.toLowerCase();
   }, []);
 
   useEffect(() => {
@@ -39,10 +35,9 @@ export const useAuth = () => {
           loading: false,
         }));
 
-        // Defer admin check with setTimeout to prevent deadlock
         if (session?.user) {
           setTimeout(() => {
-            checkAdminRole(session.user.id).then(isAdmin => {
+            checkAdminRole(session.user.id, session.user.email).then(isAdmin => {
               setAuthState(prev => ({ ...prev, isAdmin }));
             });
           }, 0);
@@ -62,7 +57,7 @@ export const useAuth = () => {
       }));
 
       if (session?.user) {
-        checkAdminRole(session.user.id).then(isAdmin => {
+        checkAdminRole(session.user.id, session.user.email).then(isAdmin => {
           setAuthState(prev => ({ ...prev, isAdmin }));
         });
       }
