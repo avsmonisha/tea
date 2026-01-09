@@ -57,7 +57,7 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
+          {user && navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -111,16 +111,18 @@ export function Header() {
             </Link>
           )}
           
-          <Link href="/cart">
-            <Button variant="ghost" size="icon" className="relative">
-              <ShoppingCart className="h-5 w-5" />
-              {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-secondary text-secondary-foreground text-xs flex items-center justify-center font-medium">
-                  {totalItems}
-                </span>
-              )}
-            </Button>
-          </Link>
+          {user && (
+            <Link href="/cart">
+              <Button variant="ghost" size="icon" className="relative">
+                <ShoppingCart className="h-5 w-5" />
+                {totalItems > 0 && (
+                  <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-secondary text-secondary-foreground text-xs flex items-center justify-center font-medium">
+                    {totalItems}
+                  </span>
+                )}
+              </Button>
+            </Link>
+          )}
 
           {/* Mobile Menu */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
@@ -131,7 +133,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px]">
               <nav className="flex flex-col gap-4 mt-8">
-                {navLinks.map((link) => (
+                {user && navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}

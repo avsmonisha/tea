@@ -1,73 +1,98 @@
-# Welcome to your Lovable project
+📌 Project Title
+# TeaLeaf Store ☕
 
-## Project info
+📝 Project Description
+TeaLeaf Store is a modern e-commerce web application built for browsing and managing premium tea products.  
+It features a clean user interface, secure authentication, and a powerful admin dashboard for product management.
 
-**URL**: https://lovable.dev/projects/164b0fdd-c8c3-4ff3-90ac-1ff51f166c10
+The project is developed with a production-ready architecture and follows best practices used in real-world applications.
 
-## How can I edit this code?
+✨ Key Features
+## ✨ Features
 
-There are several ways of editing your application.
+### User
+- Browse tea products by category
+- View detailed product information
+- Secure authentication using Supabase
+- Responsive and accessible UI
 
-**Use Lovable**
+### Admin Panel
+- Admin-only access control
+- Add, update, and delete products
+- Manage product availability (in-stock / out-of-stock)
+- Role-based authorization using Supabase policies
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/164b0fdd-c8c3-4ff3-90ac-1ff51f166c10) and start prompting.
+🛠️ Tech Stack
+## 🛠️ Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend:** Next.js 15, React, TypeScript
+- **Styling:** Tailwind CSS, shadcn/ui
+- **Backend:** Supabase (Database + Authentication)
+- **Database:** PostgreSQL (via Supabase)
+- **Deployment:** Vercel
+- **Version Control:** Git & GitHub
 
-**Use your preferred IDE**
+📂 Project Structure
+## 📂 Project Structure
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+steeped-delights-main/
+├── app/
+│   ├── admin/
+│   ├── auth/
+│   ├── products/
+│   └── profile/
+├── components/
+│   ├── layout/
+│   └── ui/
+├── hooks/
+├── integrations/
+│   └── supabase/
+├── public/
+└── styles/
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+🚀 Getting Started
+## 🚀 Getting Started
 
-Follow these steps:
+### Prerequisites
+- Node.js 18+
+- npm or yarn
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
+```bash
+git clone https://github.com/avsmonisha/tea.git
+cd tea
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Environment Variables
 
-# Step 3: Install the necessary dependencies.
-npm i
+Create a .env.local file:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+Run Locally
 npm run dev
-```
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 🌐 Live Demo
+```md
+## 🌐 Live Demo
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+🔗 Deployed on Vercel  
+(Link will be added after final deployment)
 
-## What technologies are used for this project?
+📈 Future Enhancements
+## 📈 Future Enhancements
 
-This project is built with:
+- Product image upload using Supabase Storage
+- Order management system
+- Payment gateway integration
+- Advanced analytics for admin dashboard
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+👤 Author
+## 👤 Author
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/164b0fdd-c8c3-4ff3-90ac-1ff51f166c10) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**Monisha A V S**  
+Frontend / Full-Stack Developer  
