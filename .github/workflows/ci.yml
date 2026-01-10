@@ -11,9 +11,6 @@ jobs:
   code-quality:
     name: Code Quality Check
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./steeped-delights-main
 
     steps:
       - name: Checkout code
@@ -24,6 +21,7 @@ jobs:
         with:
           version: 9
           run_install: false
+          package_json_file: ./steeped-delights-main/package.json
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -33,26 +31,32 @@ jobs:
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
-        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
+        run: |
+          cd steeped-delights-main
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
 
       - name: Setup pnpm cache
         uses: actions/cache@v4
         with:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('./steeped-delights-main/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('steeped-delights-main/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
       - name: Install dependencies
+        working-directory: ./steeped-delights-main
         run: pnpm install --frozen-lockfile
 
       - name: Type check
+        working-directory: ./steeped-delights-main
         run: pnpm exec tsc --noEmit
 
       - name: Lint
+        working-directory: ./steeped-delights-main
         run: pnpm lint
 
       - name: Build
+        working-directory: ./steeped-delights-main
         run: pnpm build
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
